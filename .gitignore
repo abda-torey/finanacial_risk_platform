@@ -1,0 +1,28 @@
+# Terraform
+.terraform/
+*.tfstate
+*.tfstate.*
+*.tfplan
+
+# Sensitive files (NEVER commit these!)
+*.tfvars # For terraform.tfvars files
+gcp-key.json # Your GCP service account key
+.env* # Docker compose environment files
+
+# Python
+__pycache__/
+*.pyc
+venv/
+.venv/
+*.log
+
+# Docker
+.dockerignore
+
+# dbt
+target/
+dbt_packages/
+profiles.yml # Local dbt profiles, will be managed by env vars
+
+# Other
+*.DS_Store
