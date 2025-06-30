@@ -20,8 +20,10 @@ jobs:
 
       - name: Authenticate to GCP
         run: |
-          echo "${{ secrets.GCP_SA_KEY }}" > "${HOME}/gcloud.json"
+          printf '%s' "${{ secrets.GCP_SA_KEY }}" > "${HOME}/gcloud.json"
           echo "GOOGLE_APPLICATION_CREDENTIALS=${HOME}/gcloud.json" >> $GITHUB_ENV
+          
+          
 
       - name: Terraform Init
         run: terraform -chdir=terraform/environments/dev init
