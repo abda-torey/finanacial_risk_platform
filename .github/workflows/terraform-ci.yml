@@ -1,0 +1,28 @@
+name: Terraform CI
+
+on:
+  pull_request:
+    branches:
+      - dev
+
+jobs:
+  terraform:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v2
+
+      - name: Terraform Format Check
+        run: terraform fmt -check -recursive
+
+      - name: Terraform Init
+        run: terraform init terraform/environments/dev
+
+      - name: Terraform Validate
+        run: terraform validate terraform/environments/dev
+
+      - name: Terraform Plan
+        run: terraform plan -input=false -var-file=terraform/environments/dev/terraform.tfvars
