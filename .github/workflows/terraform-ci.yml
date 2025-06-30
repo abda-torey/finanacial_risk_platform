@@ -17,7 +17,10 @@ jobs:
 
       - name: Terraform Format Check
         run: terraform fmt -check -recursive
-
+      - name: Authenticate to GCP
+        run: |
+          echo "${{ secrets.GCP_SA_KEY }}" > "${HOME}/gcloud.json"
+          export GOOGLE_APPLICATION_CREDENTIALS="${HOME}/gcloud.json"
       - name: Terraform Init
         run: terraform -chdir=terraform/environments/dev init
 
