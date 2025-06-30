@@ -1,5 +1,5 @@
 provider "google" {
-  
+
   project = var.gcp_project_id
   region  = var.gcp_region
   zone    = var.gcp_zone
@@ -18,16 +18,16 @@ module "networking" {
 }
 
 module "vm" {
-  source             = "../../modules/vm"
-  project_id         = var.gcp_project_id
-  instance_count     = var.vm_instance_count
-  machine_type       = var.vm_machine_type
-  network_name       = module.networking.network_name
-  subnetwork_name    = module.networking.subnetwork_name
-  zone               = var.gcp_zone
+  source          = "../../modules/vm"
+  project_id      = var.gcp_project_id
+  instance_count  = var.vm_instance_count
+  machine_type    = var.vm_machine_type
+  network_name    = module.networking.network_name
+  subnetwork_name = module.networking.subnetwork_name
+  zone            = var.gcp_zone
 
-  boot_disk_image    = "ubuntu-os-cloud/ubuntu-2204-lts"  # Ubuntu 22.04 LTS image
-  boot_disk_size     = 30 
+  boot_disk_image = "ubuntu-os-cloud/ubuntu-2204-lts" # Ubuntu 22.04 LTS image
+  boot_disk_size  = 30
   labels = {
     env     = var.env_prefix
     project = var.gcp_project_id

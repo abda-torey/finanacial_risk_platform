@@ -37,7 +37,7 @@ variable "subnetwork_name" {
 variable "boot_disk_image" {
   description = "Source image for boot disk"
   type        = string
-  default     = "ubuntu-os-cloud/ubuntu-2204-jammy-v20230808"  # Ubuntu 22.04 LTS
+  default     = "ubuntu-os-cloud/ubuntu-2204-jammy-v20230808" # Ubuntu 22.04 LTS
 }
 
 variable "boot_disk_size" {
