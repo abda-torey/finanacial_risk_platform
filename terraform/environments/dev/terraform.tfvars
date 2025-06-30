@@ -9,7 +9,7 @@ data_bucket_name   = [
   "dev-logs-bucket-financial-anomaly-464319"
 ]
 
-# Optional values (override defaults only if needed)
+# Optional value (override defaults only if needed)
 
 gcp_region         = "eu-west2"
 gcp_zone           = "eu-west2-a"
