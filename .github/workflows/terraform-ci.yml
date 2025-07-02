@@ -31,9 +31,9 @@ jobs:
 
       - name: Terraform Init
         run: terraform -chdir=terraform/environments/dev init
-
+        
       - name: Terraform Validate
-        run: terraform validate terraform/environments/dev
+        run: terraform -chdir=terraform/environments/dev validate
 
       - name: Terraform Plan
-        run: terraform plan -input=false -var-file=terraform/environments/dev/terraform.tfvars
+        run: terraform -chdir=terraform/environments/dev plan -input=false -var-file=terraform.tfvars
