@@ -1,7 +1,7 @@
 #!/bin/bash
 set -e
 
-# === User Configuration ===
+# === User Configuration   ===
 PROJECT_ID="financial-anomaly-464319"
 REPO="abda-torey/finanacial_risk_platform"
 POOL_ID="github-pool"
