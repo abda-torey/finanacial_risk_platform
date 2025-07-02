@@ -70,7 +70,7 @@ variable "data_bucket_location" {
   default     = "EU-WEST1"
 }
 
-# --- BigQuery Module Variables ---
+# --- BigQuery Module Variables biquererry---
 variable "bq_dataset_id" {
   description = "The ID for the BigQuery dataset."
   type        = string
