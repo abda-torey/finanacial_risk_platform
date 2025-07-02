@@ -9,21 +9,25 @@ jobs:
   terraform:
     runs-on: ubuntu-latest
 
+    permissions:
+      id-token: write  # Required for OIDC
+      contents: read   # Required for actions/checkout
+
     steps:
-      - uses: actions/checkout@v3
+      - name: Checkout Repo
+        uses: actions/checkout@v3
 
       - name: Setup Terraform
         uses: hashicorp/setup-terraform@v2
 
+      - name: Authenticate to Google Cloud using OIDC
+        uses: google-github-actions/auth@v2
+        with:
+          workload_identity_provider: 'projects/876001863666/locations/global/workloadIdentityPools/github-pool/providers/github-provider'
+          service_account: 'terraform-infra-sa@financial-anomaly-464319.iam.gserviceaccount.com'
+
       - name: Terraform Format Check
         run: terraform fmt -check -recursive
-
-      - name: Authenticate to GCP
-        run: |
-          printf '%s' "${{ secrets.GCP_SA_KEY }}" > "${HOME}/gcloud.json"
-          echo "GOOGLE_APPLICATION_CREDENTIALS=${HOME}/gcloud.json" >> $GITHUB_ENV
-          
-          
 
       - name: Terraform Init
         run: terraform -chdir=terraform/environments/dev init
